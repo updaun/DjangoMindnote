@@ -1,0 +1,24 @@
+{% extends 'diary/base.html' %}
+{% block page_container %}
+<!-- page_list.html -->
+<h2>일기 목록 페이지</h2>
+
+<ul>
+        <!-- 하나의 글은 여기서부터 -->
+    {% for page in pages %}
+    <li>
+        <div class="date">
+            <span><!--날짜 중 '일'-->{{ page.dt_created|date:"d" }}</span>
+                        <p><!--날짜 중 '월'-->{{ page.dt_created|date:"M" }}</p>
+        </div>
+        <h2>{{ page.title }}</h2>
+        <div class="score">
+            <p>감정점수</p>
+            <span>{{ page.score }}점</span>
+        </div>
+    </li>
+        <!-- 여기까지 반복됩니다. -->
+        {% endfor %}
+</ul>
+
+{% endblock page_container %}
